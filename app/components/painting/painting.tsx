@@ -1,5 +1,3 @@
-import { it } from "node:test";
-
 interface MenuItem {
   href: string;
   text: string;
@@ -13,9 +11,7 @@ const Painting: React.FC<PaintingProps> = ({ menu }) => (
   <ul>
     {menu.map(({href, text}) => (
       <li key={href}>
-        <a href={href}>{text}
-            <img src={href} alt={text} />
-        </a>
+            <img width="300" src={href} alt={text} />
       </li>
     ))}
   </ul>

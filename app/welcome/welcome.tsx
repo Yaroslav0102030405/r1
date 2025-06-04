@@ -1,6 +1,9 @@
 import logoDark from "./logo-dark.svg";
 import logoLight from "./logo-light.svg";
 import Painting from "~/components/painting/painting";
+import ImageCard1 from "./../images/card1.jpg";
+import ImageCard2 from "./../images/card2.jpg";
+import ImageCard3 from "./../images/card3.jpg";
 
 interface MenuItem {
   href: string
@@ -8,9 +11,11 @@ interface MenuItem {
 }
 
 const menu: MenuItem[] = [{
-    href: "https://cdn.pixabay.com/photo/2018/10/22/17/13/background-3765811_640.jpg",
+    href: ImageCard1,
     text: "Головна",
-}, {href: "https://cdn.pixabay.com/photo/2018/10/22/17/16/cake-3765821_640.jpg",
+}, {href: ImageCard2,
+    text: "Переваги"
+}, {href: ImageCard3,
     text: "Переваги"
 }]
 
