@@ -4,7 +4,8 @@ import Menu from "~/components/painting/menu/menu";
 import Logo from "~/components/logo/logo";
 import Layout from "~/components/layout/layout";
 import Footer from "~/components/footer/footer";
-import UserList from "~/components/userlist/UserList";
+import UserList from "~/components/userlist/userList";
+import Button from "~/components/button/Button";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -13,6 +14,8 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+
+
 export default function Home() {
   return <>
   <header>
@@ -20,9 +23,11 @@ export default function Home() {
       <Logo />
       <Menu/>
     </nav>
-<Welcome />
     </header>
-    <Layout>
+    <Layout title="новини">
+<Welcome />
+<Button text="Кнопка" />
+<Button text="Кнопка два" />
 </Layout>
     <Footer />
     <UserList />
