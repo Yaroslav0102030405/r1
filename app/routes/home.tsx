@@ -1,5 +1,7 @@
+import { useState } from "react";
+
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import  Welcome  from "../welcome/welcome";
 import Menu from "~/components/painting/menu/menu";
 import Logo from "~/components/logo/logo";
 import Layout from "~/components/layout/layout";
@@ -17,15 +19,18 @@ export function meta({}: Route.MetaArgs) {
 
 
 export default function Home() {
+  const [click, setClick] = useState<number>(0)
+
+
   return <>
   <header>
     <nav>
-      <Logo />
+      <Logo click={click} setClick={setClick} />
       <Menu/>
     </nav>
     </header>
     <Layout title="новини">
-<Welcome />
+<Welcome click={click} setClick={setClick}  />
 <Button text="Кнопка" />
 <Button text="Кнопка два" />
 </Layout>

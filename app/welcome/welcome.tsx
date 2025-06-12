@@ -1,3 +1,5 @@
+// import { useState } from "react";
+
 import logoDark from "./logo-dark.svg";
 import logoLight from "./logo-light.svg";
 import Painting from "~/components/painting/painting";
@@ -20,12 +22,25 @@ const menu: MenuItem[] = [{
     text: "Переваги"
 }]
 
-export function Welcome () {
+interface Props {
+  click: number;
+  setClick: React.Dispatch<React.SetStateAction<number>>
+
+}
+
+const Welcome: React.FC<Props> = ({click, setClick} ) => {
+  // const [click, setClick] = useState<number>(0)
+
+  const handleClick = () => {
+    setClick(prev => prev + 1)
+  }
   
   return (
    <>
+   <button onClick={handleClick}>Збільшити значення: {click}</button>
    <Painting menu={menu} />
       </>   
   );
 }
 
+export default Welcome;

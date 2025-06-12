@@ -10,9 +10,20 @@ const srcAndAlt: SrcAndAlt = {
     alt: "logo",
 };
 
-const Logo = () => {
+interface Props {
+  click: number;
+  setClick: React.Dispatch<React.SetStateAction<number>>
+
+}
+
+const Logo: React.FC<Props>  = ({click, setClick}) => {
+     const handleClick = () => {
+    setClick(prev => prev + 1)
+  }
+  
     return (
     <>
+     <button onClick={handleClick}>Збільшити значення: {click}</button>
     <a href="/"><img width="50" src={srcAndAlt.src} alt={srcAndAlt.alt} /></a>
     </>  );
 }
