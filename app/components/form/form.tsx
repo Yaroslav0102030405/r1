@@ -1,11 +1,18 @@
 import { useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
+import styles from "./styles.module.css"
+// const shortid = require('shortid');
+// import { v4 as uuidv4 } from 'uuid';
 
 const Form = () => {
   // State for input values
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  // const nameId: string = uuidv4()
+  // const emaiId: string = uuidv4()
+  // const passwordId: string = uuidv4()
 
   // State for validation errors
   const [nameError, setNameError] = useState<string | null>(null);
@@ -68,6 +75,11 @@ const Form = () => {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
 
+    setName("")
+    setEmail("")
+    setPassword("")
+
+
     // Re-validate all fields on submit to catch any unhandled errors
     const isNameValid = validateName(name);
     const isEmailValid = validateEmail(email);
@@ -104,7 +116,7 @@ const Form = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.s}>
         <label>
           Ім'я:
           <input
@@ -112,6 +124,7 @@ const Form = () => {
             value={name}
             onChange={handleNameChange}
             placeholder="Олег"
+            // id={nameId}
           />
         </label>
         {nameError && <p style={{ color: "red" }}>{nameError}</p>}
@@ -123,6 +136,7 @@ const Form = () => {
             value={email}
             onChange={handleEmailChange}
             placeholder="example@email.com"
+            // id={emaiId}
           />
         </label>
         {emailError && <p style={{ color: "red" }}>{emailError}</p>}
@@ -134,6 +148,7 @@ const Form = () => {
             value={password}
             onChange={handlePasswordChange}
             placeholder="Мінімум 8 символів"
+            // id={passwordId}
           />
         </label>
         {passwordError && <p style={{ color: "red" }}>{passwordError}</p>}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import type { Route } from "./+types/home";
 import  Welcome  from "../welcome/welcome";
@@ -11,6 +11,7 @@ import Button from "~/components/button/Button";
 import Dropdown from "~/components/dropdown/dropdown";
 import Greeting from "~/components/greeting/greeting";
 import Form from "~/components/form/form";
+import ColorPicker from "~/components/coloroPicker/colorPicker";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -19,15 +20,35 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+type ColorOption = {
+  label: string;
+  color: string;
+};
 
+const colors: ColorOption[] = [
+  { label: "red", color: "#DE3163" },
+  { label: "reddsd", color: "#CCCCFF" },
+  { label: "reddsds", color: "#9FE2BF" },
+];
+
+  type Theme = "light" | "dark"
 
 export default function Home() {
   const [click, setClick] = useState<number>(0)
   const message: string[] = ["Повідомлення 1", "Повідомлення 2"]
 
+ const [theme, setTheme] = useState<Theme>("light")
+
+ const toggleTheme = () => {
+  setTheme(prevTheme => prevTheme === "light" ? "dark": "light")
+
+ }
 
   return <>
+  <main className={theme}>
   <header>
+    <ColorPicker options={colors} />
+         <button onClick={toggleTheme}>Toggle Click</button>
     <nav>
       <Form />
       <Logo click={click} setClick={setClick} />
@@ -44,5 +65,6 @@ export default function Home() {
 </Layout>
     <Footer />
     <UserList />
+    </main>
    </>;
 }
