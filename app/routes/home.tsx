@@ -13,6 +13,7 @@ import Greeting from "~/components/greeting/greeting";
 import Form from "~/components/form/form";
 import ColorPicker from "~/components/coloroPicker/colorPicker";
 import Modal from "~/components/modal/modal";
+import Articles from "~/components/articles/articles";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -52,6 +53,7 @@ export default function Home() {
   return <>
   <main className={theme}>
   <header>
+    <Articles />
     <button onClick={toggleModal}  type="button">Відкрити модалку</button>
    {modal &&  <Modal onClose={toggleModal}>
     <button onClick={toggleModal}  type="button">Відкрити модалку</button>
