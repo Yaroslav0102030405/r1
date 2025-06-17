@@ -12,6 +12,7 @@ import Dropdown from "~/components/dropdown/dropdown";
 import Greeting from "~/components/greeting/greeting";
 import Form from "~/components/form/form";
 import ColorPicker from "~/components/coloroPicker/colorPicker";
+import Modal from "~/components/modal/modal";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -36,17 +37,25 @@ const colors: ColorOption[] = [
 export default function Home() {
   const [click, setClick] = useState<number>(0)
   const message: string[] = ["Повідомлення 1", "Повідомлення 2"]
-
  const [theme, setTheme] = useState<Theme>("light")
 
  const toggleTheme = () => {
   setTheme(prevTheme => prevTheme === "light" ? "dark": "light")
-
  }
+
+ const [modal, setModal] = useState<boolean>(false)
+
+  const toggleModal = () => {
+    setModal(prev => !prev)
+  }
 
   return <>
   <main className={theme}>
   <header>
+    <button onClick={toggleModal}  type="button">Відкрити модалку</button>
+   {modal &&  <Modal onClose={toggleModal}>
+    <button onClick={toggleModal}  type="button">Відкрити модалку</button>
+    </Modal>}
     <ColorPicker options={colors} />
          <button onClick={toggleTheme}>Toggle Click</button>
     <nav>
